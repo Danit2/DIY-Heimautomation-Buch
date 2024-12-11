@@ -36,9 +36,9 @@ unsigned long lastButtonTimeChange = 0;
 
 // Define data structure with three inputs
 typedef struct struct_message {
-  byte a;
-  byte b;
-  byte c;
+  byte g1;
+  byte y1;
+  byte r1;
 } struct_message;
 
 struct_message myData;
@@ -88,11 +88,11 @@ void loop() {
       lastButtonState1 = buttonState1;
       if (buttonState1 == LOW) {
         Serial.printf("Button 1 pressed!\n");
-        myData.a = !buttonState1; // Toggle value for a
+        myData.g1 = !buttonState1; // Toggle value for a
         esp_now_send(broadcastAddress, (uint8_t *)&myData, sizeof(myData));
       } else {
         Serial.printf("Button 1 released!\n");
-        myData.a = !buttonState1; // Toggle value for a
+        myData.g1 = !buttonState1; // Toggle value for a
         esp_now_send(broadcastAddress, (uint8_t *)&myData, sizeof(myData));
       }
     }
@@ -103,11 +103,11 @@ void loop() {
       lastButtonState2 = buttonState2;
       if (buttonState2 == LOW) {
         Serial.printf("Button 2 pressed!\n");
-        myData.b = !buttonState2; // Toggle value for b
+        myData.y1 = !buttonState2; // Toggle value for b
         esp_now_send(broadcastAddress, (uint8_t *)&myData, sizeof(myData));
       } else {
         Serial.printf("Button 2 released!\n");
-        myData.b = !buttonState2; // Toggle value for b
+        myData.y1 = !buttonState2; // Toggle value for b
         esp_now_send(broadcastAddress, (uint8_t *)&myData, sizeof(myData));
       }
     }
@@ -118,11 +118,11 @@ void loop() {
       lastButtonState3 = buttonState3;
       if (buttonState3 == LOW) {
         Serial.printf("Button 3 pressed!\n");
-        myData.c = !buttonState3; // Toggle value for c
+        myData.r1 = !buttonState3; // Toggle value for c
         esp_now_send(broadcastAddress, (uint8_t *)&myData, sizeof(myData));
       } else {
         Serial.printf("Button 3 released!\n");
-        myData.c = !buttonState3; // Toggle value for c
+        myData.r1 = !buttonState3; // Toggle value for c
         esp_now_send(broadcastAddress, (uint8_t *)&myData, sizeof(myData));
       }
     }
